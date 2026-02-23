@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pragmatiq Apps — Portfolio</title>
+  <meta name="description" content="Discover Pragmatiq iPhone apps: Birdie, Squish, Pomino, WorkoutCopy. Download and review each app." />
+  <style>
+    :root{--bg:#f4f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:rgba(0,0,0,.08);--radius:18px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--bg);color:var(--text)}
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    .hero{padding:72px 0 36px;text-align:center}
+    .hero h1{font-size:clamp(34px,6vw,58px);letter-spacing:-.03em;line-height:1.04;margin-bottom:12px}
+    .hero p{max-width:740px;margin:0 auto;color:var(--muted);font-size:clamp(16px,2vw,20px)}
+    .grid{display:grid;gap:24px;padding:20px 0 70px}
+    .card{display:grid;grid-template-columns:1.1fr .9fr;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 24px rgba(0,0,0,.06)}
+    .content{padding:28px}
+    .head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .icon{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);object-fit:cover}
+    h2{font-size:30px;letter-spacing:-.02em}
+    .tag{color:var(--muted);margin:8px 0 16px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;padding:11px 15px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid var(--line);color:var(--text)}
+    .btn.primary{background:#111827;color:#fff;border-color:#111827}
+
+    .shot-zone{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,#f8fafc,#edf2f8);padding:16px}
+    .carousel{position:relative;overflow:hidden;border-radius:30px;border:3px solid #111827;max-width:260px;width:100%;margin:0 auto;box-shadow:0 16px 30px rgba(0,0,0,.16)}
+    .track{display:flex;transition:transform .35s ease}
+    .track img{width:100%;flex:0 0 100%;display:block}
+    .dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+    .dot{width:8px;height:8px;border-radius:50%;border:none;background:#c8d1dc;cursor:pointer}
+    .dot.active{background:#4b93e6;transform:scale(1.25)}
+
+    .footer{text-align:center;color:var(--muted);padding:0 0 34px;font-size:14px}
+    @media (max-width:900px){.card{grid-template-columns:1fr}.carousel{max-width:230px}}
+  </style>
+</head>
+<body>
+  <header class="hero container">
+    <h1>One portfolio.<br/>Four focused iPhone apps.</h1>
+    <p>Browse all Pragmatiq apps, download in one tap, and leave a review if you like what you see.</p>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <div class="content">
+        <div class="head"><img class="icon" src="assets/birdie/icon.png" alt="Birdie icon"><h2>Birdie</h2></div>
+        <p class="tag">Simple golf scorecard. No GPS. No subscription.</p>
+        <div class="actions">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088">Download</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088?action=write-review">Review app</a>
+        </div>
+      </div>
+      <div class="shot-zone" data-carousel>
+        <div class="carousel"><div class="track">
+          <img src="assets/birdie/01-new-round.png" alt="Birdie screenshot 1">
+          <img src="assets/birdie/02-scorecard-18.png" alt="Birdie screenshot 2">
+          <img src="assets/birdie/03-round-complete.png" alt="Birdie screenshot 3">
+        </div></div>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="content">
+        <div class="head"><img class="icon" src="assets/squish/icon.png" alt="Squish icon"><h2>Squish</h2></div>
+        <p class="tag">Compress photos on iPhone. Fast and simple.</p>
+        <div class="actions">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206">Download</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206?action=write-review">Review app</a>
+        </div>
+      </div>
+      <div class="shot-zone" data-carousel>
+        <div class="carousel"><div class="track">
+          <img src="assets/squish/main-interface.png" alt="Squish screenshot 1">
+          <img src="assets/squish/results-screen.png" alt="Squish screenshot 2">
+          <img src="assets/squish/share-extension.png" alt="Squish screenshot 3">
+        </div></div>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="content">
+        <div class="head"><img class="icon" src="assets/pomino/icon.png" alt="Pomino icon"><h2>Pomino</h2></div>
+        <p class="tag">Minimal Pomodoro timer. One tap to focus.</p>
+        <div class="actions">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574">Download</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574?action=write-review">Review app</a>
+        </div>
+      </div>
+      <div class="shot-zone" data-carousel>
+        <div class="carousel"><div class="track">
+          <img src="assets/pomino/screenshot-focus-light.png" alt="Pomino screenshot 1">
+          <img src="assets/pomino/screenshot-focus-dark.png" alt="Pomino screenshot 2">
+          <img src="assets/pomino/screenshot-break.png" alt="Pomino screenshot 3">
+        </div></div>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="content">
+        <div class="head"><img class="icon" src="assets/workoutcopy/icon.png" alt="WorkoutCopy icon"><h2>WorkoutCopy</h2></div>
+        <p class="tag">Export Apple Health workouts and paste anywhere.</p>
+        <div class="actions">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929">Download</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929?action=write-review">Review app</a>
+        </div>
+      </div>
+      <div class="shot-zone" data-carousel>
+        <div class="carousel"><div class="track">
+          <img src="assets/workoutcopy/screenshot-workout-list.png" alt="WorkoutCopy screenshot 1">
+          <img src="assets/workoutcopy/screenshot-copied.png" alt="WorkoutCopy screenshot 2">
+          <img src="assets/workoutcopy/screenshot-settings.png" alt="WorkoutCopy screenshot 3">
+        </div></div>
+        <div class="dots"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer container">© 2026 Pragmatiq</div>
+
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach((root)=>{
+      const track=root.querySelector('.track');
+      const imgs=[...track.querySelectorAll('img')];
+      const dots=root.querySelector('.dots');
+      let i=0;
+      imgs.forEach((_,idx)=>{
+        const b=document.createElement('button');
+        b.className='dot'+(idx===0?' active':'');
+        b.addEventListener('click',()=>{i=idx;render();});
+        dots.appendChild(b);
+      });
+      const allDots=[...dots.querySelectorAll('.dot')];
+      function render(){track.style.transform=`translateX(-${i*100}%)`;allDots.forEach((d,idx)=>d.classList.toggle('active',idx===i));}
+      setInterval(()=>{i=(i+1)%imgs.length;render();},3800);
+    });
+  </script>
+</body>
+</html>
