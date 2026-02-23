@@ -23,6 +23,8 @@
     .actions{display:flex;gap:10px;flex-wrap:wrap}
     .btn{display:inline-flex;padding:11px 15px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid var(--line);color:var(--text)}
     .btn.primary{background:#111827;color:#fff;border-color:#111827}
+    .details{margin:0 0 16px 18px;color:#334155}
+    .details li{margin:6px 0;font-size:14px}
 
     .shot-zone{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,#f8fafc,#edf2f8);padding:16px}
     .carousel{position:relative;overflow:hidden;border-radius:30px;border:3px solid #111827;max-width:260px;width:100%;margin:0 auto;box-shadow:0 16px 30px rgba(0,0,0,.16)}
@@ -32,8 +34,12 @@
     .dot{width:8px;height:8px;border-radius:50%;border:none;background:#c8d1dc;cursor:pointer}
     .dot.active{background:#4b93e6;transform:scale(1.25)}
 
-    .footer{text-align:center;color:var(--muted);padding:0 0 34px;font-size:14px}
-    @media (max-width:900px){.card{grid-template-columns:1fr}.carousel{max-width:230px}}
+    .founder{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;gap:16px;align-items:center;box-shadow:0 8px 18px rgba(0,0,0,.05)}
+    .founder img{width:82px;height:82px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0}
+    .founder h3{font-size:24px;letter-spacing:-.02em}
+    .founder p{color:var(--muted);margin:6px 0 10px}
+    .footer{text-align:center;color:var(--muted);padding:20px 0 34px;font-size:14px}
+    @media (max-width:900px){.card{grid-template-columns:1fr}.carousel{max-width:230px}.founder{align-items:flex-start}}
   </style>
 </head>
 <body>
@@ -47,6 +53,11 @@
       <div class="content">
         <div class="head"><img class="icon" src="assets/birdie/icon.png" alt="Birdie icon"><h2>Birdie</h2></div>
         <p class="tag">Simple golf scorecard. No GPS. No subscription.</p>
+        <ul class="details">
+          <li>Track 1–4 players in seconds</li>
+          <li>9-hole and 18-hole rounds</li>
+          <li>Round history with clean score recap</li>
+        </ul>
         <div class="actions">
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088?action=write-review">Review app</a>
@@ -66,6 +77,11 @@
       <div class="content">
         <div class="head"><img class="icon" src="assets/squish/icon.png" alt="Squish icon"><h2>Squish</h2></div>
         <p class="tag">Compress photos on iPhone. Fast and simple.</p>
+        <ul class="details">
+          <li>Reduce file size up to ~90%</li>
+          <li>Works from the iOS share sheet</li>
+          <li>Batch compression + metadata control</li>
+        </ul>
         <div class="actions">
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206?action=write-review">Review app</a>
@@ -85,6 +101,11 @@
       <div class="content">
         <div class="head"><img class="icon" src="assets/pomino/icon.png" alt="Pomino icon"><h2>Pomino</h2></div>
         <p class="tag">Minimal Pomodoro timer. One tap to focus.</p>
+        <ul class="details">
+          <li>Classic 25-minute focus sessions</li>
+          <li>Automatic short + long breaks</li>
+          <li>No clutter, just deep work rhythm</li>
+        </ul>
         <div class="actions">
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574?action=write-review">Review app</a>
@@ -104,6 +125,11 @@
       <div class="content">
         <div class="head"><img class="icon" src="assets/workoutcopy/icon.png" alt="WorkoutCopy icon"><h2>WorkoutCopy</h2></div>
         <p class="tag">Export Apple Health workouts and paste anywhere.</p>
+        <ul class="details">
+          <li>Copy workouts as spreadsheet-ready rows</li>
+          <li>Share doctor-friendly text summaries</li>
+          <li>Filter by workout type and date range</li>
+        </ul>
         <div class="actions">
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929?action=write-review">Review app</a>
@@ -119,6 +145,17 @@
       </div>
     </section>
   </main>
+
+  <section class="container" style="padding-bottom:24px;">
+    <div class="founder">
+      <img src="assets/profile/paul-renard.jpg" alt="Paul Renard profile picture" />
+      <div>
+        <h3>Who Am I</h3>
+        <p>I'm Paul Renard — solo founder building simple iOS apps in public. I share experiments, wins and mistakes as we grow this portfolio.</p>
+        <a class="btn" href="https://x.com/LePaulRenard" target="_blank" rel="noopener">Follow on X (@LePaulRenard)</a>
+      </div>
+    </div>
+  </section>
 
   <div class="footer container">© 2026 Pragmatiq</div>
 
