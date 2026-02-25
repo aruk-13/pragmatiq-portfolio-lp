@@ -186,7 +186,7 @@
     </section>
   </main>
 
-  <section class="container" style="padding-bottom:24px;">
+  <section id="founderSection" class="container" style="padding-bottom:24px;">
     <div class="founder">
       <img src="assets/profile/paul-renard.jpg" alt="Paul Renard profile picture" />
       <div>
@@ -222,8 +222,9 @@
       const params = new URLSearchParams(window.location.search);
       if (params.get('f') !== '1') return; // Not in friend mode
 
-      // Show banner
+      // Show banner, hide founder section
       document.getElementById('friendBanner').classList.add('active');
+      document.getElementById('founderSection').style.display = 'none';
 
       // Activate all review panels
       document.querySelectorAll('.review-panel').forEach(panel => {
@@ -275,7 +276,7 @@
               <div class="ri-title">${esc(r.title)}</div>
               <div class="ri-body">${esc(r.body)}</div>
               <div class="ri-meta">— ${esc(r.author)}</div>
-              <button class="copy-btn" data-title="${esc(r.title)}" data-body="${esc(r.body)}">Copy</button>
+              <button class="copy-btn" data-id="${r.id}" data-title="${esc(r.title)}" data-body="${esc(r.body)}">Copy</button>
             `;
             list.appendChild(item);
           });
@@ -284,23 +285,38 @@
           list.querySelectorAll('.copy-btn').forEach(btn => {
             btn.addEventListener('click', async () => {
               const text = btn.dataset.title + '\n\n' + btn.dataset.body;
+              const reviewId = btn.dataset.id;
               try {
                 await navigator.clipboard.writeText(text);
-                btn.textContent = '✓ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
               } catch(e) {
-                // Fallback
                 const ta = document.createElement('textarea');
                 ta.value = text;
                 document.body.appendChild(ta);
                 ta.select();
                 document.execCommand('copy');
                 document.body.removeChild(ta);
-                btn.textContent = '✓ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
               }
+              // Mark used in DB
+              fetch('/api/reviews?t=1', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: Number(reviewId) }),
+              }).catch(() => {});
+              // Visual feedback then remove
+              const item = btn.closest('.review-item');
+              btn.textContent = '✓ Copied!';
+              btn.classList.add('copied');
+              item.style.opacity = '0.5';
+              item.style.pointerEvents = 'none';
+              setTimeout(() => {
+                item.style.transition = 'all .3s ease';
+                item.style.maxHeight = '0';
+                item.style.overflow = 'hidden';
+                item.style.padding = '0 14px';
+                item.style.margin = '0';
+                item.style.opacity = '0';
+                setTimeout(() => item.remove(), 350);
+              }, 800);
             });
           });
         } catch(e) {
