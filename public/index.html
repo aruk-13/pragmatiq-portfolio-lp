@@ -6,7 +6,7 @@
   <title>Pragmatiq Apps — Portfolio</title>
   <meta name="description" content="Discover Pragmatiq iPhone apps: Birdie, Squish, Pomino, WorkoutCopy. Download and review each app." />
   <style>
-    :root{--bg:#f4f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:rgba(0,0,0,.08);--radius:18px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,sans-serif}
+    :root{--bg:#f4f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:rgba(0,0,0,.08);--radius:18px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,sans-serif;--accent:#4b93e6}
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--font);background:var(--bg);color:var(--text)}
     .container{max-width:1140px;margin:0 auto;padding:0 24px}
@@ -21,8 +21,9 @@
     h2{font-size:30px;letter-spacing:-.02em}
     .tag{color:var(--muted);margin:8px 0 16px}
     .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;padding:11px 15px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid var(--line);color:var(--text)}
+    .btn{display:inline-flex;padding:11px 15px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid var(--line);color:var(--text);cursor:pointer;background:transparent;transition:all .15s}
     .btn.primary{background:#111827;color:#fff;border-color:#111827}
+    .btn:hover{opacity:.85}
     .details{margin:0 0 16px 18px;color:#334155}
     .details li{margin:6px 0;font-size:14px}
 
@@ -39,17 +40,49 @@
     .founder h3{font-size:24px;letter-spacing:-.02em}
     .founder p{color:var(--muted);margin:6px 0 10px}
     .footer{text-align:center;color:var(--muted);padding:20px 0 34px;font-size:14px}
+
+    /* === Hidden review panel === */
+    .review-panel{display:none;margin-top:16px;padding:20px;background:linear-gradient(135deg,#f0f7ff,#f5f0ff);border:1px solid #d4d4ff;border-radius:var(--radius)}
+    .review-panel.active{display:block}
+    .review-panel h3{font-size:18px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+    .review-panel .rp-sub{font-size:13px;color:var(--muted);margin-bottom:12px}
+    .review-lang-toggle{display:flex;gap:6px;margin-bottom:12px}
+    .review-lang-toggle button{padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+    .review-lang-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .review-list{display:flex;flex-direction:column;gap:10px;max-height:400px;overflow-y:auto}
+    .review-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;position:relative;transition:border-color .15s}
+    .review-item:hover{border-color:var(--accent)}
+    .review-item .ri-title{font-weight:700;font-size:14px;margin-bottom:2px}
+    .review-item .ri-body{font-size:13px;color:#334155;line-height:1.5;margin-bottom:6px}
+    .review-item .ri-meta{font-size:12px;color:var(--muted)}
+    .review-item .ri-stars{color:#FFB800;font-size:13px;margin-bottom:4px}
+    .copy-btn{position:absolute;top:12px;right:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+    .copy-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .copy-btn.copied{background:#22c55e;color:#fff;border-color:#22c55e}
+
+    /* Banner for hidden mode */
+    .friend-banner{display:none;background:linear-gradient(135deg,#4b93e6,#7c5ce0);color:#fff;text-align:center;padding:14px 24px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+    .friend-banner.active{display:block}
+    .friend-banner span{opacity:.85;font-weight:400;font-size:13px;display:block;margin-top:2px}
+
     @media (max-width:900px){.card{grid-template-columns:1fr}.carousel{max-width:230px}.founder{align-items:flex-start}}
   </style>
 </head>
 <body>
+
+  <div class="friend-banner" id="friendBanner">
+    🎉 Friend & Family Mode — Pick a review, tap copy, paste it on the App Store!
+    <span>Each review has a copy button. Just paste it in the App Store review dialog.</span>
+  </div>
+
   <header class="hero container">
     <h1>One portfolio.<br/>Four focused iPhone apps.</h1>
     <p>Browse all Pragmatiq apps, download in one tap, and leave a review if you like what you see.</p>
   </header>
 
   <main class="container grid">
-    <section class="card">
+    <!-- BIRDIE -->
+    <section class="card" data-app="birdie">
       <div class="content">
         <div class="head"><img class="icon" src="assets/birdie/icon.png" alt="Birdie icon"><h2>Birdie</h2></div>
         <p class="tag">Simple golf scorecard. No GPS. No subscription.</p>
@@ -62,6 +95,7 @@
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/fr/app/birdie-simple-golf-scorecard/id6759264088?action=write-review">Review app</a>
         </div>
+        <div class="review-panel" data-reviews="birdie"></div>
       </div>
       <div class="shot-zone" data-carousel>
         <div class="carousel"><div class="track">
@@ -73,7 +107,8 @@
       </div>
     </section>
 
-    <section class="card">
+    <!-- SQUISH -->
+    <section class="card" data-app="squish">
       <div class="content">
         <div class="head"><img class="icon" src="assets/squish/icon.png" alt="Squish icon"><h2>Squish</h2></div>
         <p class="tag">Compress photos on iPhone. Fast and simple.</p>
@@ -86,6 +121,7 @@
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759360206?action=write-review">Review app</a>
         </div>
+        <div class="review-panel" data-reviews="squish"></div>
       </div>
       <div class="shot-zone" data-carousel>
         <div class="carousel"><div class="track">
@@ -97,7 +133,8 @@
       </div>
     </section>
 
-    <section class="card">
+    <!-- POMINO -->
+    <section class="card" data-app="pomino">
       <div class="content">
         <div class="head"><img class="icon" src="assets/pomino/icon.png" alt="Pomino icon"><h2>Pomino</h2></div>
         <p class="tag">Minimal Pomodoro timer. One tap to focus.</p>
@@ -110,6 +147,7 @@
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/pomino/id6759248574?action=write-review">Review app</a>
         </div>
+        <div class="review-panel" data-reviews="pomino"></div>
       </div>
       <div class="shot-zone" data-carousel>
         <div class="carousel"><div class="track">
@@ -121,7 +159,8 @@
       </div>
     </section>
 
-    <section class="card">
+    <!-- WORKOUTCOPY -->
+    <section class="card" data-app="workoutcopy">
       <div class="content">
         <div class="head"><img class="icon" src="assets/workoutcopy/icon.png" alt="WorkoutCopy icon"><h2>WorkoutCopy</h2></div>
         <p class="tag">Export Apple Health workouts and paste anywhere.</p>
@@ -134,6 +173,7 @@
           <a class="btn primary" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929">Download</a>
           <a class="btn" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6759176929?action=write-review">Review app</a>
         </div>
+        <div class="review-panel" data-reviews="workoutcopy"></div>
       </div>
       <div class="shot-zone" data-carousel>
         <div class="carousel"><div class="track">
@@ -160,6 +200,7 @@
   <div class="footer container">© 2026 Pragmatiq</div>
 
   <script>
+    /* --- Carousel --- */
     document.querySelectorAll('[data-carousel]').forEach((root)=>{
       const track=root.querySelector('.track');
       const imgs=[...track.querySelectorAll('img')];
@@ -175,6 +216,104 @@
       function render(){track.style.transform=`translateX(-${i*100}%)`;allDots.forEach((d,idx)=>d.classList.toggle('active',idx===i));}
       setInterval(()=>{i=(i+1)%imgs.length;render();},3800);
     });
+
+    /* --- Friend & Family Review Mode --- */
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('f') !== '1') return; // Not in friend mode
+
+      // Show banner
+      document.getElementById('friendBanner').classList.add('active');
+
+      // Activate all review panels
+      document.querySelectorAll('.review-panel').forEach(panel => {
+        panel.classList.add('active');
+        const app = panel.dataset.reviews;
+        loadReviews(panel, app, 'en');
+      });
+
+      async function loadReviews(panel, app, lang) {
+        panel.innerHTML = `
+          <h3>📋 Pick a review to copy</h3>
+          <p class="rp-sub">Tap the review link above, then paste one of these reviews. Merci! 🙏</p>
+          <div class="review-lang-toggle">
+            <button class="${lang==='en'?'active':''}" data-lang="en">🇬🇧 English</button>
+            <button class="${lang==='fr'?'active':''}" data-lang="fr">🇫🇷 Français</button>
+          </div>
+          <div class="review-list"><p style="color:var(--muted);font-size:13px">Loading reviews…</p></div>
+        `;
+
+        // Language toggle
+        panel.querySelectorAll('.review-lang-toggle button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            panel.querySelectorAll('.review-lang-toggle button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            fetchAndRender(panel, app, btn.dataset.lang);
+          });
+        });
+
+        fetchAndRender(panel, app, lang);
+      }
+
+      async function fetchAndRender(panel, app, lang) {
+        const list = panel.querySelector('.review-list');
+        list.innerHTML = '<p style="color:var(--muted);font-size:13px">Loading…</p>';
+
+        try {
+          const res = await fetch(`/api/reviews?app=${app}&lang=${lang}&t=1`);
+          const data = await res.json();
+          if (!data.reviews || data.reviews.length === 0) {
+            list.innerHTML = '<p style="color:var(--muted);font-size:13px">No reviews available.</p>';
+            return;
+          }
+          list.innerHTML = '';
+          data.reviews.forEach(r => {
+            const item = document.createElement('div');
+            item.className = 'review-item';
+            item.innerHTML = `
+              <div class="ri-stars">★★★★★</div>
+              <div class="ri-title">${esc(r.title)}</div>
+              <div class="ri-body">${esc(r.body)}</div>
+              <div class="ri-meta">— ${esc(r.author)}</div>
+              <button class="copy-btn" data-title="${esc(r.title)}" data-body="${esc(r.body)}">Copy</button>
+            `;
+            list.appendChild(item);
+          });
+
+          // Copy handlers
+          list.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+              const text = btn.dataset.title + '\n\n' + btn.dataset.body;
+              try {
+                await navigator.clipboard.writeText(text);
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+              } catch(e) {
+                // Fallback
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+              }
+            });
+          });
+        } catch(e) {
+          list.innerHTML = '<p style="color:#ef4444;font-size:13px">Failed to load reviews.</p>';
+        }
+      }
+
+      function esc(s) {
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+    })();
   </script>
 </body>
 </html>

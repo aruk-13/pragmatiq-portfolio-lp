@@ -1,0 +1,8 @@
+name = "pragmatiq-portfolio-lp"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-reviews"
+database_id = "eda50d90-15e0-46e7-84d2-48f812d7f070"
